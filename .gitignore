@@ -12,6 +12,9 @@ build/
 .next/
 out/
 
+# TypeScript incremental build files
+tsconfig.tsbuildinfo
+
 # Environment variables
 .env
 .env.local
