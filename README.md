@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CodeFit - AI-Powered Fitness Coach
 
-## Getting Started
+CodeFit is a modern AI-powered fitness application that provides personalized workout routines and diet plans through voice conversation with an AI assistant.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **AI Voice Assistant**: Interactive voice conversations with CodeFit AI for personalized fitness guidance
+- **Personalized Programs**: Custom workout routines and diet plans tailored to your needs
+- **Real-time Chat**: Voice-to-text transcription during AI conversations
+- **User Authentication**: Secure login with Clerk authentication
+- **Modern UI**: Sleek, responsive design with Tailwind CSS and shadcn/ui components
+- **Real-time Database**: Powered by Convex for seamless data management
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 15 with App Router
+- **Authentication**: Clerk
+- **Database**: Convex
+- **AI Voice**: Vapi.ai for voice interactions
+- **Styling**: Tailwind CSS v4
+- **UI Components**: shadcn/ui with Radix primitives
+- **Icons**: Lucide React
+- **TypeScript**: Full type safety
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Getting Started
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js 18+ installed
+- npm, yarn, pnpm, or bun package manager
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/codefit.git
+   cd codefit
+   ```
 
-## Deploy on Vercel
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Set up environment variables:
+   Create a `.env.local` file in the root directory and add:
+   ```env
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+   CLERK_SECRET_KEY=your_clerk_secret_key
+   NEXT_PUBLIC_CONVEX_URL=your_convex_url
+   CONVEX_DEPLOY_KEY=your_convex_deploy_key
+   NEXT_PUBLIC_VAPI_WORKFLOW_ID=your_vapi_workflow_id
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Set up Convex:
+   ```bash
+   npx convex dev
+   ```
+
+5. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
+
+## 📱 Usage
+
+1. **Sign Up/Login**: Create an account or login using Clerk authentication
+2. **Generate Program**: Click "Build Your Program" to start a voice conversation with the AI
+3. **Voice Interaction**: Talk to CodeFit AI about your fitness goals, preferences, and requirements
+4. **Get Personalized Plan**: Receive custom workout routines and diet recommendations
+5. **View Profile**: Access your generated programs and track your progress
+
+## 🔧 Available Scripts
+
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build the application for production
+- `npm run start` - Start the production server
+- `npm run lint` - Run ESLint for code quality
+
+## 🌟 Key Features Explained
+
+### AI Voice Assistant
+
+- Real-time voice conversation with CodeFit AI
+- Speech-to-text transcription
+- Personalized responses based on user input
+
+### Personalized Fitness Programs
+
+- Custom workout routines based on your goals
+- Personalized diet plans and nutrition advice
+- Adaptive recommendations based on preferences
+
+### Modern User Experience
+
+- Responsive design for all devices
+- Smooth animations and transitions
+- Real-time updates and feedback
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Vapi.ai](https://vapi.ai) for voice AI capabilities
+- [Clerk](https://clerk.dev) for authentication
+- [Convex](https://convex.dev) for real-time database
+- [shadcn/ui](https://ui.shadcn.com) for beautiful UI components
+- [Tailwind CSS](https://tailwindcss.com) for styling
+
+---
