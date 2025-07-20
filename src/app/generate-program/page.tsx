@@ -6,12 +6,26 @@ import { vapi } from "@/lib/vapi";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+
+// Define types for better type safety
+interface Message {
+  content: string;
+  role: string;
+}
+
+interface VapiMessage {
+  type: string;
+  transcriptType?: string;
+  transcript?: string;
+  role?: string;
+}
 
 const GenerateProgramPage = () => {
   const [callActive, setCallActive] = useState(false);
   const [connecting, setConnecting] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [messages, setMessages] = useState<any[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [callEnded, setCallEnded] = useState(false);
 
   const { user } = useUser();
@@ -87,14 +101,16 @@ const GenerateProgramPage = () => {
       console.log("AI stopped Speaking");
       setIsSpeaking(false);
     };
-    const handleMessage = (message: any) => {
+    const handleMessage = (message: VapiMessage) => {
       if (message.type === "transcript" && message.transcriptType === "final") {
-        const newMessage = { content: message.transcript, role: message.role };
-        setMessages((prev) => [...prev, newMessage]);
+        if (message.transcript && message.role) {
+          const newMessage: Message = { content: message.transcript, role: message.role };
+          setMessages((prev) => [...prev, newMessage]);
+        }
       }
     };
 
-    const handleError = (error: any) => {
+    const handleError = (error: unknown) => {
       console.log("Vapi Error", error);
       setConnecting(false);
       setCallActive(false);
@@ -197,9 +213,11 @@ const GenerateProgramPage = () => {
 
                 <div className="relative w-full h-full rounded-full bg-card flex items-center justify-center border border-border overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-secondary/10"></div>
-                  <img
+                  <Image
                     src="/ai-avatar.png"
                     alt="AI Assistant"
+                    width={128}
+                    height={128}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -239,9 +257,11 @@ const GenerateProgramPage = () => {
             <div className="aspect-video flex flex-col items-center justify-center p-6 relative">
               {/* User Image */}
               <div className="relative size-32 mb-4">
-                <img
-                  src={user?.imageUrl}
+                <Image
+                  src={user?.imageUrl || "/default-avatar.png"}
                   alt="User"
+                  width={128}
+                  height={128}
                   // ADD THIS "size-full" class to make it rounded on all images
                   className="size-full object-cover rounded-full"
                 />
